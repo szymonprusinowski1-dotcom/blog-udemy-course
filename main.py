@@ -28,7 +28,7 @@ login_manager = LoginManager()
 login_manager.init_app(app)
 serializer = URLSafeTimedSerializer(app.config['SECRET_KEY'])
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///posts.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DB_URL', 'sqlite:///posts.db')
 db.init_app(app)
 
 
